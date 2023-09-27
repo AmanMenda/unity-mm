@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float dirX = 0;
     [SerializeField] private float moveSpeed = 12.0f;
-    [SerializeField] private float jumpForce = 20.0f;
+    [SerializeField] private float jumpForce = 25.0f;
     [SerializeField] private bool isGrounded = true;
 
     // Start is called before the first frame update
