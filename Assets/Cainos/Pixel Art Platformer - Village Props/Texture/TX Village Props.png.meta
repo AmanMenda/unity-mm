@@ -619,7 +619,7 @@ TextureImporter:
         width: 92
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -627,6 +627,90 @@ TextureImporter:
       bones: []
       spriteID: 5d5379d3e79bb5f489afab0bf467427d
       internalID: -388513552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Village Props_pant
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 612
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43bee859615d5044fb4348c220974766
+      internalID: -884012109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Village Props_blanket
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 583
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb5860a188ce17a4695199e346bad35a
+      internalID: 2069792433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Village Props_skirt
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 582
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55270c7b319ff742af2217bcce1eb06
+      internalID: 1493325063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Village Props_shirt
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 611
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa20ebb41f444545a82e4f30e58d51c
+      internalID: -679834577
       vertices: []
       indices: 
       edges: []
@@ -646,6 +730,7 @@ TextureImporter:
       TX Village Props - small box: -1884525916
       TX Village Props_banner: -1433106567
       TX Village Props_bigbush: -1932613994
+      TX Village Props_blanket: 2069792433
       TX Village Props_bonfire: 1205978614
       TX Village Props_checkpoint: -1185244274
       TX Village Props_grass1: 569223530
@@ -659,9 +744,12 @@ TextureImporter:
       TX Village Props_little_rock: 1795031435
       TX Village Props_mat: 1139747087
       TX Village Props_mediumbush: -568698601
+      TX Village Props_pant: -884012109
       TX Village Props_right_indication: -559233594
       TX Village Props_rock: -2134461671
       TX Village Props_rope: -388513552
+      TX Village Props_shirt: -679834577
+      TX Village Props_skirt: 1493325063
       TX Village Props_smallbush: -1543636657
       TX Village Props_stick1: -1353766312
       TX Village Props_stick2: 324303290
