@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+            animator.SetBool("isGrounded", false);
         }
         UpdateAnimation();
     }
@@ -43,36 +45,47 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            animator.SetBool("isGrounded", true);
         }
     }
-    
-    void Jump()
-    {
-        if (isGrounded)
-        {
-            animator.SetBool("isJumping", false);
-        }
-        else
-        {
-            animator.SetBool("isJumping", true);
-        }
-    }
+
     void UpdateAnimation()
     {
-        Jump();
-        if (dirX > 0f)
+        Debug.Log("<color=orange>" + $"{isGrounded}" + "</color>");
+
+        if (isGrounded)
         {
-            sr.flipX = false;
-            animator.SetBool("isRunning", true);
-        }
-        else if (dirX < 0f)
-        {
-            sr.flipX = true;
-            animator.SetBool("isRunning", true);
+            if (dirX > 0f)
+            {
+                Debug.Log("Righttttt");
+                sr.flipX = false;
+                animator.SetBool("isRunning", true);
+            }
+            else if (dirX < 0f)
+            {
+                Debug.Log("Lefttttt");
+                sr.flipX = true;
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+            }
         }
         else
         {
-            animator.SetBool("isRunning", false);
+            if (rb.velocity.y > 0f)
+            {
+                Debug.Log("Jump !!!");
+                animator.SetBool("isJumping", true);
+                animator.SetBool("isFalling", false);
+            }
+            else if (rb.velocity.y < 0f)
+            {
+                Debug.Log("Falling !!!");
+                animator.SetBool("isFalling", true);
+                animator.SetBool("isJumping", false);
+            }
         }
     }
 }

@@ -19,6 +19,7 @@ public class MainMenuScript : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
     public void OpenSettings()
     {
         settingsPanel.SetActive(true);
