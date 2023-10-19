@@ -76,13 +76,7 @@ public class PlayerMovement : MonoBehaviour
             // NORMAL ATTACK
             if (Input.GetKeyDown(KeyCode.E))
             {
-                animator.SetBool("isAttack1", true);
-            }
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                Debug.Log("<color=red>E not pressed</color>");
-                animator.SetBool("isAttack1", false);
-                animator.SetBool("isAttack2", false);
+                animator.SetTrigger("attack1");
             }
 
             // RUNNING / IDLE STATES
@@ -107,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("<color=red>E pressed</color>");
-                animator.SetBool("isAttack2", true);
+                animator.SetTrigger("attack2");
             }
 
             // BEING ABLE TO CHANGE DIRECTION IN THE AIR
