@@ -209,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 811921760}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.10211277, y: -1.43, z: -10}
+  m_LocalPosition: {x: 0.10211277, y: 5.46, z: -10}
   m_LocalScale: {x: 3.914252, y: 3.3293614, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -780,6 +780,7 @@ GameObject:
   - component: {fileID: 1684658426}
   - component: {fileID: 1684658430}
   - component: {fileID: 1684658431}
+  - component: {fileID: 1684658432}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -920,7 +921,7 @@ Transform:
   m_GameObject: {fileID: 1684658425}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.16, y: 2.98, z: 0}
+  m_LocalPosition: {x: -17.16, y: 2.89, z: 0}
   m_LocalScale: {x: 3.914252, y: 3.3293614, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -938,11 +939,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3d7608709abf442b2e0c0284c92eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1684658431}
+  animator: {fileID: 0}
+  sr: {fileID: 0}
   dirX: 0
   moveSpeed: 12
   jumpForce: 25
   isGrounded: 1
+  dashForce: 30
+  StartDashTimer: 0.25
+  isDashing: 0
+  dashDirection: 0
 --- !u!95 &1684658431
 Animator:
   serializedVersion: 5
@@ -964,6 +970,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1684658432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684658425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aba4d3fd9eeee949a1f58704cc89652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostPrefab: {fileID: 8222597841600602723, guid: b0647616f7e64f146b5e8ba594fb8ab3, type: 3}
+  delay: 0.01
+  delta: 0
+  destroyTime: 0.06
+  color: {r: 0.7075472, g: 0.70354223, b: 0.70354223, a: 1}
+  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

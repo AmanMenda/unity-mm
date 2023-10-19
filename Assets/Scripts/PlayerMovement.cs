@@ -7,14 +7,31 @@ using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
     public Animator animator;
-    private SpriteRenderer sr;
+
+    private Rigidbody2D rb;
+    public SpriteRenderer sr;
+    GhostController gc;
+    private float CurrentDashTimer;
 
     [SerializeField] private float dirX = 0;
     [SerializeField] private float moveSpeed = 12.0f;
     [SerializeField] private float jumpForce = 25.0f;
     [SerializeField] private bool isGrounded = true;
+
+
+    [SerializeField]
+    private float dashForce = 30f;
+
+    [SerializeField]
+    private float StartDashTimer;
+
+
+    [SerializeField]
+    private bool isDashing = false;
+
+    [SerializeField]
+    private float dashDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        gc = GetComponent<GhostController>();
+        gc.enabled = false;
     }
 
     // Update is called once per frame
@@ -35,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
     private void parseInput()
     {
         dirX = Input.GetAxisRaw("Horizontal");
-
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -43,19 +61,42 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
         }
+        if (Input.GetKeyDown(KeyCode.F) && rb.velocity.y > 0f && dirX != 0)
+        {
+            isDashing = true;
+            CurrentDashTimer = StartDashTimer;
+            rb.velocity = Vector2.zero;
+            dashDirection = dirX;
+        }
+        dashEffect();
     }
 
+    private void dashEffect()
+    {
+        if (isDashing)
+        {
+            gc.enabled = true;
+            rb.velocity = transform.right * dashDirection * dashForce;
+            CurrentDashTimer -= Time.deltaTime;
+
+            if (CurrentDashTimer <= 0)
+            {
+                isDashing = false;
+                gc.enabled = false;
+            }
+        }
+    }
     private void checkIfGrounded()
     {
-        if (rb.velocity.y == 0f)
-        {
-            isGrounded = true;
-            animator.SetBool("isGrounded", true);
-        }
-        else
+        if (rb.velocity.y != 0)
         {
             isGrounded = false;
             animator.SetBool("isGrounded", false);
+        }
+        else
+        {
+            isGrounded = true;
+            animator.SetBool("isGrounded", true);
         }
     }
 
@@ -64,15 +105,15 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            animator.SetBool("isGrounded", true);
         }
     }
 
     void UpdateAnimation()
     {
+        Debug.Log("<color=orange>" + $"{isGrounded}" + "</color>");
         if (isGrounded)
-        {
-            Debug.Log("<color=orange>" + $"{isGrounded}" + "</color>");
-            
+        {   
             // NORMAL ATTACK
             if (Input.GetKeyDown(KeyCode.E))
             {
