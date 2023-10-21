@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    public GameObject settingsPanel;
+    [SerializeField]
+    private GameObject settingsPanel;
+    
+    [SerializeField]
+    private GameObject helpPanel;
+
+    [SerializeField]
+    private GameObject creditsPanel;
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);      
+        SceneManager.LoadScene(1);
     }
 
     public void OpenSettings()
@@ -21,6 +28,26 @@ public class MainMenuScript : MonoBehaviour
     public void CloseSettings()
     {
         settingsPanel.SetActive(false);
+    }
+
+    public void OpenHelp()
+    {
+        helpPanel.SetActive(true);
+    }
+
+    public void CloseHelp()
+    {
+        helpPanel.SetActive(false);
+    }
+
+    public void OpenCredits()
+    {
+        creditsPanel.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        creditsPanel.SetActive(false);
     }
 
     public void ExitGame()
